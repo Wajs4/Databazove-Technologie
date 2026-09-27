@@ -35,3 +35,6 @@ JOIN products p ON o.product_id = p.product_id;
 
 #uloha:4
 SELECT c.region,SUM(o.sales) AS total_sales FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
+
+#uloha:5
+SELECT p.product_name,SUM(o.sales) AS total_sales FROM products p LEFT JOIN orders o ON p.product_id = o.product_id GROUP BY p.product_name;
