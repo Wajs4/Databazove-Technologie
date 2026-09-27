@@ -48,3 +48,6 @@ SELECT c.region,SUM(o.sales) AS total_sales FROM customers c JOIN orders o ON 
 #uloha:8
 SELECT c.customer_name,COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_id, 
 c.customer_name;
+
+#uloha:9
+SELECT p.category, AVG(o.discount) AS average_discount FROM products p JOIN orders o ON p.product_id = o.product_id GROUP BY p.category;
