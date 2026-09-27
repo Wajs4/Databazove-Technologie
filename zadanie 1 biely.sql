@@ -55,3 +55,7 @@ SELECT p.category, AVG(o.discount) AS average_discount FROM products p JOIN or
 #uloha:10
 SELECT c.customer_name,SUM(o.sales) AS total_sales FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_id,c.customer_name
 HAVING SUM(o.sales) > 2000;
+
+#uloha:11
+SELECT c.region,SUM(o.sales) AS total_sales,AVG(o.discount) AS average_discount,COUNT(o.order_id) AS order_count FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
