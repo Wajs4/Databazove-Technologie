@@ -59,3 +59,6 @@ HAVING SUM(o.sales) > 2000;
 #uloha:11
 SELECT c.region,SUM(o.sales) AS total_sales,AVG(o.discount) AS average_discount,COUNT(o.order_id) AS order_count FROM customers c
 JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
+
+#uloha:12
+SELECT c.region,COUNT(CASE WHEN o.sales > 1000 THEN 1 END) AS high_value_count,COUNT(CASE WHEN o.sales <= 1000 THEN 1 END) AS low_value_count FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
