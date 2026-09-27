@@ -62,3 +62,8 @@ JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
 
 #uloha:12
 SELECT c.region,COUNT(CASE WHEN o.sales > 1000 THEN 1 END) AS high_value_count,COUNT(CASE WHEN o.sales <= 1000 THEN 1 END) AS low_value_count FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
+
+#uloha:13
+WITH customer_summary AS (SELECT c.customer_id,c.customer_name,SUM(o.sales) AS total_sales,AVG(o.discount) AS average_discount,COUNT(o.order_id) AS order_count FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_id,c.customer_name)
+SELECT customer_name,total_sales,average_discount,order_count,CASE WHEN total_sales > 2500 THEN 'VIP'ELSE 'REGULAR'END AS customer_type
+FROM customer_summary ORDER BY total_sales DESC;
