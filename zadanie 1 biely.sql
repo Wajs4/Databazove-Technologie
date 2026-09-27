@@ -32,3 +32,6 @@ SELECT o.order_id,c.customer_name,o.sales FROM orders o JOIN customers c ON o.c
 #uloha:3
 SELECT o.order_id,c.customer_name,p.category,o.sales FROM orders o JOIN customers c ON o.customer_id = c.customer_id
 JOIN products p ON o.product_id = p.product_id;
+
+#uloha:4
+SELECT c.region,SUM(o.sales) AS total_sales FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.region;
